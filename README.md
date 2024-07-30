@@ -50,4 +50,23 @@ Neo Tech [+Modpack Server] - is a modern version of tech minecraft with 100+ que
 - Chipped (More blocks)
 - Building Gadget
 
+## Create server by modpack
+
+- Auto setup (recommended)
+
+1. Fork the project
+3. Pass secrets to github "project secrets"
+4. Make release to launch github actions
+
+- Manual setup
+
+1. Copy `docker-compose.yml` to the server
+2. Copy .env.example to .env
+3. Pass secrets
+4. Remove .example from the config/Discord-Integration.toml.example and pass secrets
+
+```
+docker-compose up -d
+```
+
 Discord: https://discord.gg/hRpBxF4ySz
