@@ -52,13 +52,13 @@ Neo Tech [+Modpack Server] - is a modern version of tech minecraft with 100+ que
 
 ## Create server by modpack
 
-- Auto setup (recommended)
+### Auto setup (recommended)
 
 1. Fork the project
 3. Pass secrets to github "project secrets"
 4. Make release to launch github actions
 
-- Manual setup
+### Manual setup
 
 1. Copy `docker-compose.yml` to the server
 2. Copy .env.example to .env
