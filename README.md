@@ -70,10 +70,9 @@ Neo Tech [+Modpack Server] - is a modern version of tech minecraft with 100+ que
 
 - How to install docker on a server?
   - install the docker by the script
-      ```
-      /bin/bash -c "$(curl -fsSL https://get.docker.com)"
-      ```
+  ```/bin/bash -c "$(curl -fsSL https://get.docker.com)"```
 - How to give Operator?
-  - you need to launch console `docker exec -i mc rcon-cli`
+  - you need to launch console 
+  ```docker exec -i mc rcon-cli```
 
 Discord: https://discord.gg/hRpBxF4ySz
