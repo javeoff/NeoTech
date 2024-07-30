@@ -55,7 +55,7 @@ Neo Tech [+Modpack Server] - is a modern version of tech minecraft with 100+ que
 ### Auto setup (recommended)
 
 1. Fork the project
-3. Pass secrets to github "project secrets"
+3. Pass secrets from .env.example to github "project secrets"
 4. Make release to launch github actions
 
 ### Manual setup
@@ -64,9 +64,6 @@ Neo Tech [+Modpack Server] - is a modern version of tech minecraft with 100+ que
 2. Copy .env.example to .env
 3. Pass secrets
 4. Remove .example from the config/Discord-Integration.toml.example and pass secrets
-
-```
-docker-compose up -d
-```
+5. Run the command on the server `docker-compose up -d`
 
 Discord: https://discord.gg/hRpBxF4ySz
