@@ -1,0 +1,42 @@
+{
+	id: "0414572B7C36F04F"
+	loot_crate: {
+		color: 16777215
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		string_id: "common_powah_lootbox"
+	}
+	loot_size: 1
+	order_index: 1
+	rewards: [
+		{
+			count: 16
+		}
+		{
+			count: 16
+		}
+		{ item: "powah:battery_starter" }
+		{
+			count: 64
+		}
+		{ item: "powah:binding_card" }
+		{ item: "powah:thermo_generator_starter" }
+		{
+			count: 8
+		}
+		{
+			count: 32
+		}
+		{
+			count: 8
+		}
+		{
+			count: 2
+		}
+		{ item: "powah:battery_basic" }
+		{ item: "powah:crystal_nitro" }
+	]
+}

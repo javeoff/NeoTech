@@ -1,0 +1,34 @@
+{
+	// Enable ProjectE compat, This will allow EE4 to load ProjectE emc values provided by other mods
+	"ProjectECompat": false,
+	// Create EMC values for non emc items using their recipes
+	"UseRecipeManager": true,
+	// Collectors require their owner to be online to function
+	"CollectorsRequireOnline": true,
+	// Emc cost to repair 1 damage using the repair talisman
+	"RepairTalismanCost": 10.0,
+	// Destruction catalyst cost when breaking blocks
+	"DestructionCatalystUseCost": 100.0,
+	// Print debug logs
+	"DEBUG_PRINT": false,
+	// Disable EMC tooltip in other inventories (This will also mean JEI)
+	"DisableEmcTooltip": false,
+	// Cost of using the life stone to heal in EMC
+	"LifeStoneHealCost": 100.0,
+	// Cost of using the life stone to eat in EMC
+	"LifeStoneEatCost": 100.0,
+	// Life Stone effect range on Pedestal
+	"LifeStoneRange": 5,
+	// Volcanite create lave cost in EMC
+	"VolcaniteLavaCost": 100.0,
+	// Volcanite spawn projectile cost in EMC
+	"VolcaniteSpawnProjectileCost": 500.0,
+	// Volcanite Pedestal cost in EMC
+	"VolcanitePedestalCost": 1000.0,
+	// Evertide create water cost in EMC
+	"EvertideWaterCost": 100.0,
+	// Evertide spawn projectile cost in EMC
+	"EvertideSpawnProjectileCost": 500.0,
+	// Evertide Pedestal cost in EMC
+	"EvertidePedestalCost": 1000.0
+}

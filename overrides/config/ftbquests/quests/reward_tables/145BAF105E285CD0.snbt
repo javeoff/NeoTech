@@ -1,0 +1,23 @@
+{
+	id: "145BAF105E285CD0"
+	loot_size: 1
+	order_index: 2
+	rewards: [
+		{
+			count: 16
+			weight: 2.0f
+		}
+		{
+			count: 8
+			weight: 2.0f
+		}
+		{
+			count: 4
+		}
+		{ item: "powah:battery_hardened" }
+		{ item: "powah:thermo_generator_niotic" }
+		{
+			count: 4
+		}
+	]
+}

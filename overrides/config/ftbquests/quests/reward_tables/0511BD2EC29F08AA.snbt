@@ -1,0 +1,18 @@
+{
+	id: "0511BD2EC29F08AA"
+	loot_size: 1
+	order_index: 4
+	rewards: [
+		{
+			count: 8
+			weight: 3.0f
+		}
+		{
+			count: 4
+			weight: 2.0f
+		}
+		{ item: "powah:battery_spirited", weight: 2.0f }
+		{ item: "powah:battery_niotic", weight: 3.0f }
+		{ item: "powah:nitro_crystal_block", weight: 3.0f }
+	]
+}
