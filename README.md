@@ -2,7 +2,7 @@
 
 Neo Tech [+Modpack Server] - is a modern version of tech minecraft with 100+ quests, similar to old mod versions but with a new format.
 
-[preview!](https://cdn.modrinth.com/data/cached_images/3d976d36bc5521095b0021d55f2805e1c1047405.jpeg)
+![preview](https://cdn.modrinth.com/data/cached_images/3d976d36bc5521095b0021d55f2805e1c1047405.jpeg)
 
 ## Tech Mods:
 
