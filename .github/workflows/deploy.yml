@@ -1,7 +1,12 @@
 name: Deploy to server
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - main
+
+# on:
+  # release:
+  #   types: [published]
 
 jobs:
   deploy:
@@ -49,7 +54,7 @@ jobs:
 
     - name: add curseforge secret
       run: |
-        echo 'SECRET_KEY=${{ secrets.SECRET_KEY }}' >> .env
+        echo 'SECRET_KEY=${{ secrets.SECRET_KEY }}' >> ~/.env
 
     - name: Launch Docker Compose
       run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ~ && docker-compose up -d"
