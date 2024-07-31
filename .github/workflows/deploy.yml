@@ -61,8 +61,8 @@ jobs:
 
     - name: Install no 3-rd party mods
       run: |
-        ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "wget -O ~/data/mods/extended-industrialization-1.1.3+1.20.4.jar 'https://cdn.modrinth.com/data/CCM0U9YU/versions/bh0naWYl/extended-industrialization-1.1.3+1.20.4.jar'"
-        ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "wget -O ~/data/mods/tesseract-neoforge-1.1.0+1.20.4.jar 'https://cdn.modrinth.com/data/pHNT1iyc/versions/5u3gQmDF/tesseract-neoforge-1.1.0+1.20.4.jar'"
+        ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "wget -O ~/data/mods/extended-industrialization-1.1.3+1.20.4.jar 'https://cdn.modrinth.com/data/CCM0U9YU/versions/bh0naWYl/extended-industrialization-1.1.3+1.20.4.jar'" || true
+        ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "wget -O ~/data/mods/tesseract-neoforge-1.1.0+1.20.4.jar 'https://cdn.modrinth.com/data/pHNT1iyc/versions/5u3gQmDF/tesseract-neoforge-1.1.0+1.20.4.jar'" || true
 
     - name: Copy discord notification script
       run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cp ~/data/config/Discord-Integration.toml.example ~/data/config/Discord-Integration.toml"
