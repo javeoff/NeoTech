@@ -48,7 +48,7 @@ jobs:
         echo "ANNOUNCE_PLAYER_ACHIEVEMENTS=${{ secrets.ANNOUNCE_PLAYER_ACHIEVEMENTS }}" >> .env
         echo "SPAWN_PROTECTION=${{ secrets.SPAWN_PROTECTION }}" >> .env
         echo "SEED=${{ secrets.SEED }}" >> .env
-        echo "CF_API_KEY=${{ secrets.CF_API_KEY }}" >> .env
+        echo "CF_API_KEY=${ secrets.CF_API_KEY#*\/ }" >> .env
 
     - name: Copy .env file to remote server
       run: scp -o StrictHostKeyChecking=no .env ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/.env
