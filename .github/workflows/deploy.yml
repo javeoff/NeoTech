@@ -59,10 +59,19 @@ jobs:
       run: scp -o StrictHostKeyChecking=no .env ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/.env
       shell: bash
 
-    - name: install no 3-rd party mods
+    - name: Install no 3-rd party mods
       run: |
         ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "wget -O ~/data/mods/extended-industrialization-1.1.3+1.20.4.jar 'https://cdn.modrinth.com/data/CCM0U9YU/versions/bh0naWYl/extended-industrialization-1.1.3+1.20.4.jar'"
         ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "wget -O ~/data/mods/tesseract-neoforge-1.1.0+1.20.4.jar 'https://cdn.modrinth.com/data/pHNT1iyc/versions/5u3gQmDF/tesseract-neoforge-1.1.0+1.20.4.jar'"
+
+    - name: Copy discord notification script
+      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cp ~/data/config/Discord-Integration.toml.example ~/data/config/Discord-Integration.toml"
+      shell: bash
+
+    - name: Replace example data to secrets
+      run: |
+        sed -i 's|botToken = "CHANGEME"|botToken = "${{ secrets.DISCORD_TOKEN }}"|' ~/data/config/Discord-Integration.toml
+        sed -i 's|botChannel = "CHANGEME"|botChannel = "${{ secrets.DISCORD_CHAT_CHANNEL }}"|' ~/data/config/Discord-Integration.toml
 
     - name: Launch Docker Compose
       run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ~ && docker-compose up -d"
