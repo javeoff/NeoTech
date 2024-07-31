@@ -35,7 +35,7 @@ jobs:
         MEMORY=${{ secrets.MEMORY }}
         NEOFORGE_VERSION=${{ secrets.NEOFORGE_VERSION }}
         TYPE=${{ secrets.TYPE }}
-        CF_API_KEY=${{ secrets.CF_API_KEY }}
+        CF_API_KEY="${{ secrets.CF_API_KEY }}"
         CF_PAGE_URL=${{ secrets.CF_PAGE_URL }}
         CF_FORCE_SYNCHRONIZE=${{ secrets.CF_FORCE_SYNCHRONIZE }}
         CF_FORCE_REINSTALL_MODLOADER=${{ secrets.CF_FORCE_REINSTALL_MODLOADER }}
@@ -52,3 +52,10 @@ jobs:
     - name: Launch Docker Compose
       run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ~ && docker-compose up -d"
       shell: bash
+    - name: Discord Notification
+        if: success()
+        uses: discord-actions/message@v2
+        with:
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          message: "deployed"
+
