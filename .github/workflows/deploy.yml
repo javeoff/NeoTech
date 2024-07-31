@@ -52,13 +52,9 @@ jobs:
         EOF"
       shell: bash
 
-    - name: Preprocess secret
-      id: preprocess_secret
-      run: echo "::set-output name=escaped_secret::${{ secrets.CF_API_KEY//$/$$ }}"
-
     - name: add curseforge secret
       run: |
-        ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "echo 'CF_API_KEY=${{ steps.preprocess_secret.outputs.escaped_secret }}' >> ~/.env"
+        ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "echo 'CF_API_KEY=${{ secrets.CF_API_KEY#*\/ }}' >> ~/.env"
 
     - name: Launch Docker Compose
       run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ~ && docker-compose up -d"
