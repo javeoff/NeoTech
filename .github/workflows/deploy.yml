@@ -65,7 +65,7 @@ jobs:
         ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "wget -O ~/data/mods/tesseract-neoforge-1.1.0+1.20.4.jar 'https://cdn.modrinth.com/data/pHNT1iyc/versions/5u3gQmDF/tesseract-neoforge-1.1.0+1.20.4.jar'" || true
 
     - name: Copy discord notification script
-      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cp ~/data/config/Discord-Integration.toml.example ~/data/config/Discord-Integration.toml"
+      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cp ~/data/config/Discord-Integration.toml.example ~/data/config/Discord-Integration.toml || true"
       shell: bash
 
     - name: Replace example data to secrets
