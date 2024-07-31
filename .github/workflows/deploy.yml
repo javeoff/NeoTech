@@ -53,9 +53,8 @@ jobs:
       run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ~ && docker-compose up -d"
       shell: bash
     - name: Discord Notification
-        if: success()
-        uses: discord-actions/message@v2
-        with:
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          message: "deployed"
-
+      if: success()
+      uses: discord-actions/message@v2
+      with:
+        webhookUrl: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        message: "deployed"
