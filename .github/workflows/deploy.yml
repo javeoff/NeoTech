@@ -34,7 +34,6 @@ jobs:
         NEOFORGE_VERSION=${{ secrets.NEOFORGE_VERSION }}
         MOD_PLATFORM=${{ secrets.MOD_PLATFORM }}
         TYPE=${{ secrets.TYPE }}
-        CF_API_KEY=${{ secrets.CF_API_KEY }}
         CF_PAGE_URL=${{ secrets.CF_PAGE_URL }}
         CF_FORCE_SYNCHRONIZE=${{ secrets.CF_FORCE_SYNCHRONIZE }}
         CF_FORCE_REINSTALL_MODLOADER=${{ secrets.CF_FORCE_REINSTALL_MODLOADER }}
@@ -47,6 +46,10 @@ jobs:
         SEED=${{ secrets.SEED }}
         EOF"
       shell: bash
+
+    - name: add curseforge secret
+      run: |
+        echo 'SECRET_KEY=${{ secrets.SECRET_KEY }}' >> .env
 
     - name: Launch Docker Compose
       run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ~ && docker-compose up -d"
