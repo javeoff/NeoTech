@@ -49,12 +49,9 @@ jobs:
         ANNOUNCE_PLAYER_ACHIEVEMENTS=${{ secrets.ANNOUNCE_PLAYER_ACHIEVEMENTS }}
         SPAWN_PROTECTION=${{ secrets.SPAWN_PROTECTION }}
         SEED=${{ secrets.SEED }}
+        CF_API_KEY=${ secrets.CF_API_KEY}
         EOF"
       shell: bash
-
-    - name: add curseforge secret
-      run: |
-        ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "echo 'CF_API_KEY=${secrets.CF_API_KEY#*\/}' >> ~/.env"
 
     - name: Launch Docker Compose
       run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ~ && docker-compose up -d"
