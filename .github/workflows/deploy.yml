@@ -33,6 +33,7 @@ jobs:
         VERSION=${{ secrets.VERSION }}
         MEMORY=${{ secrets.MEMORY }}
         NEOFORGE_VERSION=${{ secrets.NEOFORGE_VERSION }}
+        MOD_PLATFORM=${{ secrets.MOD_PLATFORM }}
         TYPE=${{ secrets.TYPE }}
         CF_API_KEY="${{ secrets.CF_API_KEY }}"
         CF_PAGE_URL=${{ secrets.CF_PAGE_URL }}
