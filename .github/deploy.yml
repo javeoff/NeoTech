@@ -3,3 +3,52 @@ on:
   push:
     tags:
       - 'deploy'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install SSH key
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+      shell: bash
+
+    - name: Add SSH known hosts
+      run: ssh-keyscan ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+      shell: bash
+
+    - name: Copy files to server
+      run: scp -r . ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~
+      shell: bash
+
+    - name: Save secrets to .env file
+      run: |
+        ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cat <<EOF > ~/.env
+        EULA=${{ secrets.EULA }}
+        VERSION=${{ secrets.VERSION }}
+        MEMORY=${{ secrets.MEMORY }}
+        NEOFORGE_VERSION=${{ secrets.NEOFORGE_VERSION }}
+        TYPE=${{ secrets.TYPE }}
+        CF_API_KEY=${{ secrets.CF_API_KEY }}
+        CF_PAGE_URL=${{ secrets.CF_PAGE_URL }}
+        CF_FORCE_SYNCHRONIZE=${{ secrets.CF_FORCE_SYNCHRONIZE }}
+        CF_FORCE_REINSTALL_MODLOADER=${{ secrets.CF_FORCE_REINSTALL_MODLOADER }}
+        CF_OVERRIDES_SKIP_EXISTING=${{ secrets.CF_OVERRIDES_SKIP_EXISTING }}
+        DIFFICULTY=${{ secrets.DIFFICULTY }}
+        OPS=${{ secrets.OPS }}
+        MAX_WORLD_SIZE=${{ secrets.MAX_WORLD_SIZE }}
+        ANNOUNCE_PLAYER_ACHIEVEMENTS=${{ secrets.ANNOUNCE_PLAYER_ACHIEVEMENTS }}
+        SPAWN_PROTECTION=${{ secrets.SPAWN_PROTECTION }}
+        SEED=${{ secrets.SEED }}
+        EOF"
+      shell: bash
+
+    - name: Launch Docker Compose
+      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ~ && docker-compose up -d"
+      shell: bash
