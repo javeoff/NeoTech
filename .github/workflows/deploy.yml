@@ -53,7 +53,7 @@ jobs:
         ${{ secrets.CF_API_KEY }}
         EOF
         )
-        echo "CF_API_KEY=${{ $key }}" >> .env
+        echo "CF_API_KEY=${{ key }}" >> .env
 
     - name: Copy .env file to remote server
       run: scp -o StrictHostKeyChecking=no .env ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/.env
