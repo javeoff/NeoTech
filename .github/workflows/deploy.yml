@@ -32,7 +32,7 @@ jobs:
 
     - name: Save secrets to .env file
       run: |
-        ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cat <<EOF > ~/.env
+        ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cat << 'EOF' > ~/.env
         EULA=${{ secrets.EULA }}
         VERSION=${{ secrets.VERSION }}
         MEMORY=${{ secrets.MEMORY }}
@@ -49,7 +49,7 @@ jobs:
         ANNOUNCE_PLAYER_ACHIEVEMENTS=${{ secrets.ANNOUNCE_PLAYER_ACHIEVEMENTS }}
         SPAWN_PROTECTION=${{ secrets.SPAWN_PROTECTION }}
         SEED=${{ secrets.SEED }}
-        CF_API_KEY=${ secrets.CF_API_KEY}
+        CF_API_KEY=${{ secrets.CF_API_KEY }}
         EOF"
       shell: bash
 
