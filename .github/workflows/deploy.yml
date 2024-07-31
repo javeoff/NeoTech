@@ -6,7 +6,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
@@ -35,7 +34,7 @@ jobs:
         NEOFORGE_VERSION=${{ secrets.NEOFORGE_VERSION }}
         MOD_PLATFORM=${{ secrets.MOD_PLATFORM }}
         TYPE=${{ secrets.TYPE }}
-        CF_API_KEY="${{ secrets.CF_API_KEY//$/$$ }}"
+        CF_API_KEY=${{ secrets.CF_API_KEY//$/$$ }}
         CF_PAGE_URL=${{ secrets.CF_PAGE_URL }}
         CF_FORCE_SYNCHRONIZE=${{ secrets.CF_FORCE_SYNCHRONIZE }}
         CF_FORCE_REINSTALL_MODLOADER=${{ secrets.CF_FORCE_REINSTALL_MODLOADER }}
