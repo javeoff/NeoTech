@@ -30,27 +30,28 @@ jobs:
       run: scp -r docker-compose.yml ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~
       shell: bash
 
-    - name: Save secrets to .env file
+    - name: Save secrets to local .env file
       run: |
-        ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cat << 'EOF' > ~/.env
-        EULA=${{ secrets.EULA }}
-        VERSION=${{ secrets.VERSION }}
-        MEMORY=${{ secrets.MEMORY }}
-        NEOFORGE_VERSION=${{ secrets.NEOFORGE_VERSION }}
-        MOD_PLATFORM=${{ secrets.MOD_PLATFORM }}
-        TYPE=${{ secrets.TYPE }}
-        CF_PAGE_URL=${{ secrets.CF_PAGE_URL }}
-        CF_FORCE_SYNCHRONIZE=${{ secrets.CF_FORCE_SYNCHRONIZE }}
-        CF_FORCE_REINSTALL_MODLOADER=${{ secrets.CF_FORCE_REINSTALL_MODLOADER }}
-        CF_OVERRIDES_SKIP_EXISTING=${{ secrets.CF_OVERRIDES_SKIP_EXISTING }}
-        DIFFICULTY=${{ secrets.DIFFICULTY }}
-        OPS=${{ secrets.OPS }}
-        MAX_WORLD_SIZE=${{ secrets.MAX_WORLD_SIZE }}
-        ANNOUNCE_PLAYER_ACHIEVEMENTS=${{ secrets.ANNOUNCE_PLAYER_ACHIEVEMENTS }}
-        SPAWN_PROTECTION=${{ secrets.SPAWN_PROTECTION }}
-        SEED=${{ secrets.SEED }}
-        CF_API_KEY=$${{ secrets.CF_API_KEY }}
-        EOF"
+        echo "EULA=${{ secrets.EULA }}" >> .env
+        echo "VERSION=${{ secrets.VERSION }}" >> .env
+        echo "MEMORY=${{ secrets.MEMORY }}" >> .env
+        echo "NEOFORGE_VERSION=${{ secrets.NEOFORGE_VERSION }}" >> .env
+        echo "MOD_PLATFORM=${{ secrets.MOD_PLATFORM }}" >> .env
+        echo "TYPE=${{ secrets.TYPE }}" >> .env
+        echo "CF_PAGE_URL=${{ secrets.CF_PAGE_URL }}" >> .env
+        echo "CF_FORCE_SYNCHRONIZE=${{ secrets.CF_FORCE_SYNCHRONIZE }}" >> .env
+        echo "CF_FORCE_REINSTALL_MODLOADER=${{ secrets.CF_FORCE_REINSTALL_MODLOADER }}" >> .env
+        echo "CF_OVERRIDES_SKIP_EXISTING=${{ secrets.CF_OVERRIDES_SKIP_EXISTING }}" >> .env
+        echo "DIFFICULTY=${{ secrets.DIFFICULTY }}" >> .env
+        echo "OPS=${{ secrets.OPS }}" >> .env
+        echo "MAX_WORLD_SIZE=${{ secrets.MAX_WORLD_SIZE }}" >> .env
+        echo "ANNOUNCE_PLAYER_ACHIEVEMENTS=${{ secrets.ANNOUNCE_PLAYER_ACHIEVEMENTS }}" >> .env
+        echo "SPAWN_PROTECTION=${{ secrets.SPAWN_PROTECTION }}" >> .env
+        echo "SEED=${{ secrets.SEED }}" >> .env
+        echo "CF_API_KEY=${{ secrets.CF_API_KEY }}" >> .env
+
+    - name: Copy .env file to remote server
+      run: scp .env ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/.env
       shell: bash
 
     - name: Launch Docker Compose
