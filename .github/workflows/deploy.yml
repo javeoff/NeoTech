@@ -57,4 +57,12 @@ jobs:
       uses: discord-actions/message@v2
       with:
         webhookUrl: ${{ secrets.DISCORD_RELEASES_WEBHOOK }}
-        message: "deployed"
+        message: |
+          📢 **New Release!**
+          **Name:** ${{ github.event.release.name }}
+          **Tag:** ${{ github.event.release.tag_name }}
+
+          **Description:**
+          ${{ github.event.release.body }}
+
+          [View Release](https://github.com/${{ github.repository }}/releases/tag/${{ github.event.release.tag_name }})
