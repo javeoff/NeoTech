@@ -61,8 +61,8 @@ jobs:
 
     - name: install no 3-rd party mods
       run: |
-        ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "wget -O ~/mods https://cdn.modrinth.com/data/CCM0U9YU/versions/bh0naWYl/extended-industrialization-1.1.3%2B1.20.4.jar"
-        ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "wget -O ~/mods https://cdn.modrinth.com/data/pHNT1iyc/versions/5u3gQmDF/tesseract-neoforge-1.1.0%2B1.20.4.jar"
+        ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "wget -O ~/mods/ https://cdn.modrinth.com/data/CCM0U9YU/versions/bh0naWYl/extended-industrialization-1.1.3%2B1.20.4.jar"
+        ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "wget -O ~/mods/ https://cdn.modrinth.com/data/pHNT1iyc/versions/5u3gQmDF/tesseract-neoforge-1.1.0%2B1.20.4.jar"
 
     - name: Launch Docker Compose
       run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ~ && docker-compose up -d"
