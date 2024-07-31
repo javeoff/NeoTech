@@ -1,8 +1,7 @@
 name: Deploy to server
 on:
-  push:
-    tags:
-      - 'v*'
+  release:
+    types: [published]
 
 jobs:
   deploy:
@@ -59,10 +58,9 @@ jobs:
         webhookUrl: ${{ secrets.DISCORD_RELEASES_WEBHOOK }}
         message: |
           📢 **New Release!**
-          **Name:** ${{ github.event.release.name }}
-          **Tag:** ${{ github.event.release.tag_name }}
-
-          **Description:**
+          Name: ${{ github.event.release.name }}
+          Tag: ${{ github.event.release.tag_name }}
+          Changelog:
           ${{ github.event.release.body }}
 
           [View Release](https://github.com/${{ github.repository }}/releases/tag/${{ github.event.release.tag_name }})
