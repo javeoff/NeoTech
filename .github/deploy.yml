@@ -1,8 +1,7 @@
 name: Deploy to server
 on:
-  push:
-    tags:
-      - 'deploy*'
+  release:
+    types: [created]
 
 jobs:
   deploy:
