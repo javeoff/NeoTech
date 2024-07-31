@@ -70,8 +70,8 @@ jobs:
 
     - name: Replace example data to secrets
       run: |
-        ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} 'sed -i \'s|botToken = "CHANGEME"|botToken = "${{ secrets.DISCORD_TOKEN }}"|\' ~/data/config/Discord-Integration.toml'
-        ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} 'sed -i \'s|botChannel = "CHANGEME"|botChannel = "${{ secrets.DISCORD_CHAT_CHANNEL }}"|\' ~/data/config/Discord-Integration.toml'
+        ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} 'sed -i 's|botToken = "CHANGEME"|botToken = "${{ secrets.DISCORD_TOKEN }}"|' ~/data/config/Discord-Integration.toml' || true
+        ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} 'sed -i 's|botChannel = "CHANGEME"|botChannel = "${{ secrets.DISCORD_CHAT_CHANNEL }}"|' ~/data/config/Discord-Integration.toml' || true
 
     - name: Launch Docker Compose
       run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ~ && docker-compose up -d"
