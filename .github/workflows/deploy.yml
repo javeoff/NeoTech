@@ -61,7 +61,7 @@ jobs:
 
     - name: add mods folder if it doesn't exist
       run: |
-        ssh $${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "mkdir -p mods"
+        ssh $${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ~ && mkdir -p mods"
 
     - name: install no 3-rd party mods
       run: |
