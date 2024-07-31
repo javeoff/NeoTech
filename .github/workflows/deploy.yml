@@ -56,5 +56,5 @@ jobs:
       if: success()
       uses: discord-actions/message@v2
       with:
-        webhookUrl: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        webhookUrl: ${{ secrets.DISCORD_RELEASES_WEBHOOK }}
         message: "deployed"
