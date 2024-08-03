@@ -30,6 +30,10 @@ jobs:
       run: scp -r docker-compose.yml ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~
       shell: bash
 
+    - name: Copy files to server
+      run: scp -r ./config/Discord-Integration.toml.example ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~
+      shell: bash
+
     - name: Save secrets to local .env file
       run: |
         echo "EULA=${{ secrets.EULA }}" >> .env
@@ -65,7 +69,7 @@ jobs:
         ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "wget -O ~/data/mods/tesseract-neoforge-1.1.0+1.20.4.jar 'https://cdn.modrinth.com/data/pHNT1iyc/versions/5u3gQmDF/tesseract-neoforge-1.1.0+1.20.4.jar'" || true
 
     - name: Copy discord notification script
-      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cp ~/data/config/Discord-Integration.toml.example ~/data/config/Discord-Integration.toml || true"
+      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cp ~/Discord-Integration.toml.example ~/data/config/Discord-Integration.toml || true"
       shell: bash
 
     - name: Replace example data to secrets
@@ -74,7 +78,7 @@ jobs:
         ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} 'sed -i 's|botChannel = "CHANGEME"|botChannel = "${{ secrets.DISCORD_CHAT_CHANNEL }}"|' ~/data/config/Discord-Integration.toml' || true
 
     - name: Launch Docker Compose
-      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ~ && docker-compose up -d"
+      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ~ && docker-compose down && docker-compose up -d"
       shell: bash
 
     - name: Discord Notification
