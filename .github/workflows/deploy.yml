@@ -31,7 +31,7 @@ jobs:
       shell: bash
 
     - name: Copy files to server
-      run: scp -r ./config/Discord-Integration.toml.example ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~
+      run: scp -r ./overrides/config/Discord-Integration.toml.example ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~
       shell: bash
 
     - name: Save secrets to local .env file
